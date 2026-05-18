@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تك تُوب - مجلة التكنولوجيا العربية الأولى</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="magazine-loader">
+        <div class="loader-brand">
+            <i class="fab fa-android logo-spin"></i>
+            <h1>تك<span class="gradient-text">تُوب</span></h1>
+        </div>
+        <div class="loader-progress">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <span class="breaking-news">
+                    <i class="fas fa-bolt"></i> خبر عاجل: إطلاق iPhone 16 غداً!
+                </span>
+                <div class="top-actions">
+                    <a href="#" class="dark-mode-toggle">
+                        <i class="fas fa-moon"></i>
+                    </a>
+                    <a href="#" class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="magazine-header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="menu-toggle" onclick="toggleMainMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="#" class="logo" onclick="showPage('home')">
+                    <div class="logo-ring"></div>
+                    <i class="fas fa-bolt"></i>
+                    <span>تك تُوب</span>
+                </a>
+            </div>
+            
+            <div class="header-center">
+                <div class="search-container magazine-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="ابحث عن تطبيقات وأخبار تقنية... 🔍" id="mainSearch">
+                    <div class="search-suggestions" id="searchSuggestions"></div>
+                    <button class="search-filters">
+                        <i class="fas fa-sliders-h"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <nav class="primary-nav">
+                    <a href="#" class="nav-item active" data-page="home">
+                        <i class="fas fa-home"></i>
+                        <span>الرئيسية</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="trending">
+                        <i class="fas fa-fire"></i>
+                        <span>الترند</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="categories">
+                        <i class="fas fa-th-large"></i>
+                        <span>الفئات</span>
+                    </a>
+                </nav>
+                <button class="user-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Floating Mobile Navigation -->
+        <div class="mobile-nav-float">
+            <a href="#" class="float-nav-item active" data-page="home">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="#" class="float-nav-item" data-page="trending">
+                <i class="fas fa-fire"></i>
+                <span>ترند</span>
+            </a>
+            <a href="#" class="float-nav-item search-float" onclick="toggleMobileSearch()">
+                <i class="fas fa-search"></i>
+                <span>بحث</span>
+            </a>
+            <a href="#" class="float-nav-item" data-page="categories">
+                <i class="fas fa-th-large"></i>
+                <span>فئات</span>
+            </a>
+            <a href="#" class="float-nav-item">
+                <i class="fas fa-user"></i>
+                <span>حسابي</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Mobile Search Overlay -->
+    <div class="mobile-search-overlay" id="mobileSearchOverlay">
+        <div class="mobile-search-container">
+            <input type="text" placeholder="ابحث في التطبيقات والأخبار..." id="mobileSearch">
+            <div class="search-suggestions mobile" id="mobileSearchSuggestions"></div>
+        </div>
+    </div>
+
+    <!-- Main Menu Overlay -->
+    <div class="main-menu-overlay" id="mainMenuOverlay">
+        <div class="main-menu-panel">
+            <div class="menu-header">
+                <h3>تك تُوب</h3>
+                <button class="menu-close" onclick="toggleMainMenu()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="menu-nav">
+                <a href="#" onclick="showPage('home'); toggleMainMenu()">
+                    <i class="fas fa-home"></i> الرئيسية
+                </a>
+                <a href="#" onclick="showPage('trending'); toggleMainMenu()">
+                    <i class="fas fa-fire"></i> الترند
+                </a>
+                <a href="#" onclick="showPage('categories'); toggleMainMenu()">
+                    <i class="fas fa-th-large"></i> الفئات
+                </a>
+                <a href="#"><i class="fas fa-bookmark"></i> المحفوظة</a>
+                <a href="#"><i class="fas fa-cog"></i> الإعدادات</a>
+            </nav>
+            <div class="menu-footer">
+                <a href="#" class="login-btn gradient-fill">تسجيل الدخول</a>
+            </div>
+        </div>
+    </div>
+
+    <main class="magazine-main">
+    <div class="container">
+        <!-- Home Page -->
+        <section id="home" class="magazine-page active">
+            <!-- Hero -->
+            <div class="magazine-hero">
+                <div class="hero-featured glass-card elevate">
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1701537329072-1241b9ab48d8?w=800&h=520&fit=crop&q=85" alt="ChatGPT-5" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="hero-label trending-label">ترند #1</div>
+                    </div>
+                    <div class="hero-content">
+                        <div class="meta-tags">
+                            <span class="category-tag primary">ذكاء اصطناعي</span>
+                            <span class="time-tag"><i class="far fa-clock"></i> 3 ساعات</span>
+                        </div>
+                        <h1 class="hero-title">ChatGPT-5 يُغير قواعد اللعبة: كل ما تحتاج معرفته عن الإصدار القادم</h1>
+                        <div class="hero-meta">
+                            <div class="author-avatar">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM3MDcxRkYiLz4KPGNpcmNsZSBjeD0iMTUiIGN5PSIxNCIgcj0iNiIgZmlsbD0iI0ZGRkZGRiIvPgo8L3N2Zz4K" alt="Author">
+                            </div>
+                            <div class="hero-stats">
+                                <span>أحمد السيد</span>
+                                <div class="engagement-stats">
+                                    <span class="views"><i class="far fa-eye"></i> 45.2K</span>
+                                    <span class="likes"><i class="far fa-heart"></i> 2.3K</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="hero-cta gradient-fill" onclick="showPage('article1')">
+                            اقرأ الآن <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trending Apps Section (NEW) -->
+            <section class="trending-apps-section">
+                <h2 class="section-title">
+                    <i class="fas fa-fire"></i>
+                    التطبيقات الترند
+                </h2>
+                <div class="trending-apps-grid">
+                    <!-- Real APK App Cards -->
+                    <div class="app-card glass-card elevate" data-app="whatsapp">
+                        <div class="app-icon">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                        </div>
+                        <div class="app-header">
+                            <div class="app-title">واتساب</div>
+                            <div class="app-subtitle">WhatsApp LLC</div>
+                            <div class="app-version">الإصدار 2.24.1.77</div>
+                        </div>
+                        <div class="app-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-score">4.9</span>
+                            <span class="rating-count">(2.3M)</span>
+                        </div>
+                        <div class="app-stats">
+                            <span class="stat-item"><i class="fas fa-download"></i> 1.2B</span>
+                            <span class="stat-item"><i class="fas fa-mobile-alt"></i> 10.2 MB</span>
+                        </div>
+                        <a href="#" class="app-download-btn primary" onclick="downloadApp('whatsapp')">
+                            <i class="fab fa-android"></i>
+                            تحميل APK
+                        </a>
+                    </div>
+
+                    <div class="app-card glass-card elevate" data-app="tiktok">
+                        <div class="app-icon">
+                            <img src="https://raw.githubusercontent.com/ant-design/ant-design-icons/master/packages/icons-svg/svg/filled/tik-tok.svg" alt="TikTok">
+                        </div>
+                        <div class="app-header">
+                            <div class="app-title">تيك توك</div>
+                            <div class="app-subtitle">TikTok Pte. Ltd.</div>
+                            <div class="app-version">الإصدار 34.1.5</div>
+                        </div>
+                        <div class="app-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-score">4.6</span>
+                            <span class="rating-count">(1.8M)</span>
+                        </div>
+                        <div class="app-stats">
+                            <span class="stat-item"><i class="fas fa-download"></i> 892M</span>
+                            <span class="stat-item"><i class="fas fa-mobile-alt"></i> 145 MB</span>
+                        </div>
+                        <a href="#" class="app-download-btn primary" onclick="downloadApp('tiktok')">
+                            <i class="fab fa-android"></i>
+                            تحميل APK
+                        </a>
+                    </div>
+
+                    <div class="app-card glass-card elevate" data-app="instagram">
+                        <div class="app-icon">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/3840px-Instagram_logo_2016.svg.png" alt="Instagram">
+                        </div>
+                        <div class="app-header">
+                            <div class="app-title">إنستغرام</div>
+                            <div class="app-subtitle">Instagram</div>
+                            <div class="app-version">الإصدار 312.0.0.42.101</div>
+                        </div>
+                        <div class="app-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-score">4.4</span>
+                            <span class="rating-count">(1.5M)</span>
+                        </div>
+                        <div class="app-stats">
+                            <span class="stat-item"><i class="fas fa-download"></i> 2.1B</span>
+                            <span class="stat-item"><i class="fas fa-mobile-alt"></i> 68 MB</span>
+                        </div>
+                        <a href="#" class="app-download-btn primary" onclick="downloadApp('instagram')">
+                            <i class="fab fa-android"></i>
+                            تحميل APK
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Content Layout -->
+            <div class="content-layout">
+                <!-- Main Content -->
+                <div class="main-content-area">
+                    <!-- Featured Stories -->
+                    <section class="featured-stories">
+                        <h2 class="section-title">
+                            <i class="fas fa-star"></i>
+                            المميز اليوم
+                        </h2>
+                        <div class="stories-grid">
+                            <article class="story-card horizontal glass-card elevate">
+                                <div class="story-image">
+                                    <img src="https://images.unsplash.com/photo-1721332155438-ea4e7ebff80f?w=600&h=280&fit=crop&q=85" alt="iPhone 16" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div class="story-info">
+                                    <div class="story-meta">
+                                        <span class="category-tag secondary">هواتف</span>
+                                        <span class="time-tag">منذ ساعة</span>
+                                    </div>
+                                    <h3>iPhone 16 Pro Max: كل التسريبات والمواصفات المتوقعة</h3>
+                                    <div class="story-footer">
+                                        <span>علي محمد</span>
+                                        <span class="views"><i class="far fa-eye"></i> 18K</span>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="story-card horizontal glass-card elevate">
+                                <div class="story-image">
+                                    <img src="https://images.unsplash.com/photo-1610945263439-4e577e5dc989?w=600&h=280&fit=crop&q=85" alt="AI Tools" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div class="story-info">
+                                    <div class="story-meta">
+                                        <span class="category-tag primary">ذكاء اصطناعي</span>
+                                        <span class="time-tag">3 ساعات</span>
+                                    </div>
+                                    <h3>أفضل أدوات الذكاء الاصطناعي للمطورين في 2025</h3>
+                                    <div class="story-footer">
+                                        <span>فاطمة علي</span>
+                                        <span class="views"><i class="far fa-eye"></i> 14K</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- Latest Apps Grid -->
+                    <section class="latest-apps">
+                        <h2 class="section-title">
+                            <i class="fas fa-th-large"></i>
+                            أحدث التطبيقات
+                        </h2>
+                        <div class="apps-grid">
+                            <div class="app-card-compact glass-card elevate" onclick="showAppDetails('whatsapp')">
+                                <div class="app-icon-compact">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                                </div>
+                                <div class="app-info-compact">
+                                    <div class="app-name-compact">واتساب</div>
+                                    <div class="app-rating-compact">4.9 <i class="fas fa-star"></i></div>
+                                    <div class="app-size-compact">10.2 MB</div>
+                                </div>
+                            </div>
+                            <!-- Add more compact apps -->
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sticky Sidebar -->
+                <aside class="blog-sidebar sticky-sidebar">
+                    <!-- Download Stats -->
+                    <div class="sidebar-widget glass-card elevate download-stats-widget">
+                        <h3><i class="fas fa-chart-line"></i> إحصائيات التحميل</h3>
+                        <div class="download-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">5.2M</span>
+                                <span class="stat-label">تحميلات اليوم</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">124M</span>
+                                <span class="stat-label">إجمالي التحميلات</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Categories -->
+                    <div class="sidebar-widget glass-card elevate">
+                        <h3><i class="fas fa-tags"></i> الفئات السريعة</h3>
+                        <ul class="categories-list">
+                            <li><a href="#" class="cat-item android"><i class="fab fa-android"></i><span>أندرويد</span><span class="count">(245)</span></a></li>
+                            <li><a href="#" class="cat-item ios"><i class="fab fa-apple"></i><span>آيفون</span><span class="count">(198)</span></a></li>
+                            <li><a href="#" class="cat-item ai"><i class="fas fa-robot"></i><span>ذكاء اصطناعي</span><span class="count">(156)</span></a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="sidebar-widget glass-card elevate newsletter-box">
+                        <h3><i class="fas fa-envelope"></i> اشترك في النشرة</h3>
+                        <p>احصل على أحدث الأخبار التقنية يومياً</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="أدخل بريدك الإلكتروني" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Trending Page (NEW) -->
+        <section id="trending" class="magazine-page">
+            <h1 class="page-title">التطبيقات الترند</h1>
+            <div class="trending-apps-grid full-width">
+                <!-- More trending apps here -->
+                <div class="app-card glass-card elevate large" data-app="whatsapp-large">
+                    <!-- Full app card content -->
+                </div>
+            </div>
+        </section>
+
+        <!-- App Details Page (NEW) -->
+        <section id="appDetails" class="magazine-page">
+            <div class="app-details-container glass-card elevate">
+                <div class="app-details-header">
+                    <div class="app-icon-large">
+                        <img src="" alt="" id="detailAppIcon">
+                    </div>
+                    <div class="app-details-info">
+                        <h1 id="detailAppTitle"></h1>
+                        <div class="app-developer" id="detailAppDeveloper"></div>
+                        <div class="app-rating-large" id="detailAppRating"></div>
+                    </div>
+                </div>
+                <div class="app-download-section">
+                    <a href="#" class="app-download-btn large primary" id="detailDownloadBtn">
+                        <i class="fab fa-android"></i>
+                        تحميل APK مجاناً
+                    </a>
+                    <div class="app-file-info">
+                        <span id="detailAppVersion"></span>
+                        <span id="detailAppSize"></span>
+                        <span id="detailAppDownloads"></span>
+                    </div>
+                </div>
+                <div class="app-screenshots">
+                    <!-- Screenshots carousel -->
+                </div>
+                <div class="app-description">
+                    <!-- App description -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Article Page -->
+        <section id="article1" class="magazine-page">
+            <!-- Existing article content -->
+        </section>
+    </div>
+</main>
+
+    <!-- Footer -->
+    <footer class="magazine-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-footer">
+                        <i class="fas fa-bolt"></i>
+                        <span>تك تُوب</span>
+                    </div>
+                    <p>مجلة التكنولوجيا العربية الأولى</p>
+                </div>
+                <nav class="footer-nav">
+                    <a href="#">عن المجلة</a>
+                    <a href="#">الإعلان معنا</a>
+                    <a href="#">الخصوصية</a>
+                    <a href="#">اتصل بنا</a>
+                </nav>
+                <div class="social-footer">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 تك تُوب. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
